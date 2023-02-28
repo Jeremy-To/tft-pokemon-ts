@@ -1,29 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setMyPkmId } from '../../redux/pokemonSlice';
 import axios from 'axios';
+import { Pokemon, EvolutionChain } from '../../types/pokemon';
 
-interface PokemonSpecies {
-	name: string;
-	url: string;
-}
-
-interface EvolutionChain {
-	chain: {
-    url: any;
-		evolves_to: {
-			species: PokemonSpecies;
-		}[];
-	};
-}
-
-interface Pokemon {
-	id: number;
-	name: string;
-	sprites: {
-		front_default: string;
-	};
-}
 
 function EvolveButton() {
 	const myPkmId = useSelector(

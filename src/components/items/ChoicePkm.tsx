@@ -2,19 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMyPkmId } from '../../redux/pokemonSlice';
 import { Link } from 'react-router-dom';
+import { Pokemon, PokemonStat } from '../../types/pokemon';
 
-interface Pokemon {
-	id: number;
-	name: string;
-	totalStats: number;
-	sprites: {
-		front_default: string;
-	};
-}
-interface PokemonStat {
-	base_stat: number;
-	// Other properties if any
-}
 
 function ChoicePkm(): JSX.Element {
 	const { difficultyLevel } = useSelector(

@@ -1,11 +1,11 @@
 export interface Pokemon {
 	id: number;
 	name: string;
+	stats?: PokemonStat[];
 	totalStats?: number;
 	sprites: {
 		front_default: string;
 	};
-	stats?: PokemonStat[];
 }
 
 export interface PokemonStat {

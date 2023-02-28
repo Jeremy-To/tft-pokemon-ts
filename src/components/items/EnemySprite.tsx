@@ -2,18 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { setEnemyPkmId } from '../../redux/pokemonSlice';
 import ChoicePkm from './ChoicePkm';
-
-interface Pokemon {
-id: number;
-name: string;
-totalStats: number;
-sprites: {
-front_default: string;
-};
-stats: {
-base_stat: number;
-}[];
-}
+import { Pokemon } from '../../types/pokemon';
 
 function EnemySprite() {
 	const { difficultyLevel } = useSelector((state: any) => state.pokemon);
@@ -41,12 +30,17 @@ function EnemySprite() {
 					`https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`
 				);
 				const pokemon: Pokemon = await response.json();
-
+				let totalStats: number = 0;
 				// Check if the total stats of the Pokemon matches the difficulty level
-				const totalStats: number = pokemon.stats.reduce(
-					(acc: number, cur: { base_stat: number }) => acc + cur.base_stat,
-					0
-				);
+				if (pokemon.stats) {
+						totalStats = pokemon.stats.reduce(
+							(acc: number, cur: { base_stat: number }) => acc + cur.base_stat,
+							0
+						);
+				} else {
+					totalStats = 0;
+				}
+			
 				if (totalStats < maxTotalStats && totalStats > minTotalStats) {
 					randomPokemon = {
 						id: pokemon.id,
