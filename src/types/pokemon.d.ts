@@ -11,7 +11,6 @@ export interface Pokemon {
 export interface PokemonStat {
 	base_stat: number;
 	stat: { name: string };
-	// Other properties if any
 }
 
 export interface PokemonSpecies {
