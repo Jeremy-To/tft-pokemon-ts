@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { setEnemyPkmId } from '../../redux/pokemonSlice';
+import { setEnemyPkmId } from '../../../slices/pokemonSlice';
 import ChoicePkm from './ChoicePkm';
 import { Pokemon } from '../../types/pokemon';
 
@@ -33,14 +33,14 @@ function EnemySprite() {
 				let totalStats: number = 0;
 				// Check if the total stats of the Pokemon matches the difficulty level
 				if (pokemon.stats) {
-						totalStats = pokemon.stats.reduce(
-							(acc: number, cur: { base_stat: number }) => acc + cur.base_stat,
-							0
-						);
+					totalStats = pokemon.stats.reduce(
+						(acc: number, cur: { base_stat: number }) => acc + cur.base_stat,
+						0
+					);
 				} else {
 					totalStats = 0;
 				}
-			
+
 				if (totalStats < maxTotalStats && totalStats > minTotalStats) {
 					randomPokemon = {
 						id: pokemon.id,

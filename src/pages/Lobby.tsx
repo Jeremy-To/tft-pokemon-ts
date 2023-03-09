@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setDifficultyLevel } from '../redux/pokemonSlice';
+import { setDifficultyLevel } from '../../slices/pokemonSlice';
 
 const Lobby: React.FC = () => {
 	const dispatch = useDispatch();

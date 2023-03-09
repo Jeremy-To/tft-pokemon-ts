@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setMyPkmId } from '../../redux/pokemonSlice';
+import { setMyPkmId } from '../../../slices/pokemonSlice';
 import axios from 'axios';
 import { Pokemon, EvolutionChain } from '../../types/pokemon';
-
 
 function EvolveButton() {
 	const myPkmId = useSelector(

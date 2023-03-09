@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMyPkmId } from '../../redux/pokemonSlice';
+import { setMyPkmId } from '../../../slices/pokemonSlice';
 import { Link } from 'react-router-dom';
 import { Pokemon, PokemonStat } from '../../types/pokemon';
-
 
 function ChoicePkm(): JSX.Element {
 	const { difficultyLevel } = useSelector(

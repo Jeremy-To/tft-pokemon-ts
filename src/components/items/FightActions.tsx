@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setEnemyPkmId } from '../../redux/pokemonSlice';
+import { setEnemyPkmId } from '../../../slices/pokemonSlice';
 import PokemonCard from '../layout/Card';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
-import EvolveButton from './EvolveButton';
-import { RootState } from '../../redux/RootState';
 import { Pokemon, PokemonStat } from '../../types/pokemon';
 
 function FightActions() {
-	const myPkmId = useSelector((state: RootState) => state.pokemon.myPkmId);
+	const myPkmId = useSelector((state: any) => state.pokemon.myPkmId);
 	const enemyPkmId = useSelector(
-		(state: RootState) => state.pokemon.enemyPkmId
+		(state: any) => state.pokemon.enemyPkmId
 	);
 	const dispatch = useDispatch();
 
@@ -56,27 +54,27 @@ function FightActions() {
 			myPokemon.stats !== undefined
 				? myPokemon.stats.find(
 						(stat: PokemonStat) => stat.stat.name === 'attack'
-				  )?.base_stat ?? 0
+				  )?.base_stat ?? 30
 				: 0;
 
 		const mySpecialAttack =
 			myPokemon.stats !== undefined
 				? myPokemon.stats.find(
 						(stat: PokemonStat) => stat.stat.name === 'special-attack'
-				  )?.base_stat ?? 0
+				  )?.base_stat ?? 30
 				: 0;
 
 		const enemyDefense =
 			enemyPokemon.stats !== undefined
 				? enemyPokemon.stats.find(
 						(stat: PokemonStat) => stat.stat.name === 'defense'
-				  )?.base_stat ?? 0
+				  )?.base_stat ?? 30
 				: 0;
 		const enemySpecialDefense =
 			enemyPokemon.stats !== undefined
 				? enemyPokemon.stats.find(
 						(stat: PokemonStat) => stat.stat.name === 'special-defense'
-				  )?.base_stat ?? 0
+				  )?.base_stat ?? 30
 				: 0;
 
 		const damage = Math.round(
@@ -102,7 +100,6 @@ function FightActions() {
 			<div className="m-4 cursor-pointer  p-2 rounded-md bg-red-50 flex justify-center hover:bg-red-900 hover:text-white active:bg-red-400">
 				<button onClick={handleAttack}>Attack</button>
 			</div>
-			<EvolveButton />
 			<Modal isOpen={modalIsOpen}>
 				<div className="bg-green-300 flex flex-col justify-center items-center h-full">
 					<h2 className="text-6xl font-bold m-4">Victory!</h2>

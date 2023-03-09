@@ -29,4 +29,6 @@ const pokemonSlice = createSlice({
 export const { setDifficultyLevel, setMyPkmId, setEnemyPkmId } =
 	pokemonSlice.actions;
 
-export default pokemonSlice.reducer;
+const pokemonReducer = pokemonSlice.reducer;
+
+export default pokemonReducer;
